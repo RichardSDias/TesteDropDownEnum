@@ -59,7 +59,7 @@ namespace TesteDropDownEnum.Controllers
 
     public static class Helpers
     {
-        public static SelectList MeuEnumItens3(this HtmlHelper html, MeuEnum? itemSelecionado)
+        public static IEnumerable<SelectListItem> MeuEnumItens3(this HtmlHelper html, MeuEnum? itemSelecionado)
         {
             var lista = new List<SelectListItem>();
 
@@ -68,7 +68,7 @@ namespace TesteDropDownEnum.Controllers
                 lista.Add(new SelectListItem() { Text = item.ToString("F"), Value = item.ToString(), Selected = (itemSelecionado.HasValue ? itemSelecionado.Value == item : false) });
             }
 
-            return new SelectList(lista);
+            return lista;
         }
 
         public static SelectList MeuEnumItens(this HtmlHelper html, MeuEnum? item = null)
